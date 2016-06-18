@@ -28,7 +28,7 @@ GPUTILS from SourceForge
 MPLAB From Microchip
 
 Let's take a look at a simple program using the framework and go through it. It's called blink and all it does is blink an LED connected to port RA1. It may look like a lot of code to blink an LED, and it is, but it also includes the framework. Once you understand how it works it will become more of a help than a hinderance.
-`
+```
    1 ;----------------------------------------------------------------------
    2 ;
    3 ; File: blink.asm
@@ -194,7 +194,7 @@ Let's take a look at a simple program using the framework and go through it. It'
  163 
  164 		end
  165 
-`
+```
 The first 50 lines are mostly boilerplate. The first section is a header with hookup, version, author and revision information. The next block contains compiler directives for setting the default radix for numerical constants, suppressing certain unnecessary compiler messages and including the header file for the PIC 16f819 processor. The header provices manifest constant for register locations, bit definitions etc. The __config directive specifies the values of the fuse bits. It is important to turn MCLR on and LVP (low voltage programming) off. The next block includes a collection of macros that provides some high-level constructs to the programmer such as loops, structured if and some convenience macros. If GPASM is being used the assumption is that macros.inc is in a separate directory and made available via the -I directive. MPLAB on the PC does not have this capability so the path to an adjacent include directory is specified explicitly.
 
 Line 50 begins the pin definitions section. The mask values specify pin directions (1 is input 0 is output). The #defines create symbolic names for the pins. serin_pin and seroaut_pin are use by the serial I/O routines and are required. In addition the trisb_mask bits 0 and 1 must be set to 1 and 0 respectively in order to set up the proper pin direction for the serial port pins. The led_pin is part of the "user" portion of the program. You can add your own here.
